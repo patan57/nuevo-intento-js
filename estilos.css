@@ -11,7 +11,7 @@
         padding: 5rem 0;
     }
 
-    .title {
+    .titulo {
         text-align: center;
         margin-bottom: 2rem;
     }
@@ -68,13 +68,12 @@
         object-fit: cover;
         height: 200px;
         border: 0.25rem solid;
-        border-radius: var(--radius);
     }
 
     .item-info header {
         display: flex;
         justify-content: space-between;
-        border-bottom: 0.5px dotted var(--clr-grey-5);
+        border-bottom: 0.5px 
     }
 
     .item-info h4 {
