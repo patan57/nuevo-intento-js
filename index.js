@@ -10,7 +10,7 @@ Swal.fire({
 })
 })
 
-const menu = [
+const menues = [
     {
         id: 1,
         titulo: "panqueques con miel y frambuesas",
@@ -109,6 +109,17 @@ const menu = [
     },
 ];
 
+const guardar = (clave, valor) => {localStorage.setItem(clave, valor);}
+for(const menu of menues){
+    guardar(menu.id, JSON.stringify(menu))
+}
+localStorage.setItem("menues", JSON.stringify(menues));
+
+let menus = localStorage.getItem("menues");
+console.log(JSON.parse(menues));
+console.log(menues);
+
+
 /*fetch*/
 
 const lista = document.querySelector('#listado')
@@ -116,15 +127,15 @@ fetch('/data.json')
     .then((res) => res.json)
     .then((data) =>{
 
-        data.forEach((menu) =>{
+        data.forEach((menues) =>{
             const li = document.createElement('li')
             li.innerHTML = `
-            <h4>${menu.titulo}</h4>
-            <p>${menu.id}</p>
-            <p>${menu.categoria}</p>
-            <p>${menu.precio}</p>
-            <p>${menu.img}</p>
-            <p>${menu.desc}</p>
+            <h4>${menues.titulo}</h4>
+            <p>${menues.id}</p>
+            <p>${menues.categoria}</p>
+            <p>${menues.precio}</p>
+            <p>${menues.img}</p>
+            <p>${menues.desc}</p>
             <hr/>
             `
 
@@ -135,7 +146,7 @@ fetch('/data.json')
 const pedirPlatos = () => {
     return new Promise ((resolve, reject) =>{
         setTimeout (() =>{
-            resolve(menu)
+            resolve(menues)
         },3000)
     })
 }
@@ -148,23 +159,23 @@ const sectionCenter = document.querySelector("section-center");
 const btnContainer = document.querySelector(".btn-container");
 
 window.addEventListener("DOMContentLoaded", function () {
-    diplayMenuItems(menu);
+    diplayMenuItems(menues);
     displayMenuButtons();
 });
 
 filterBtns.forEach(function(btn){
     btn.addEventListener("click", function(e){
         const categoria = e.currentTarget.dataset.id;
-        const menuCategoria = menu.filter(function(menuItem){
-            if (menuItem.categoria === categoria) {
-                return menuItem;
+        const menuesCategoria = menu.filter(function(menuesItem){
+            if (menuesItem.categoria === categoria) {
+                return menuesItem;
             }
         });
         if(categoria === 'todos'){
-            diplayMenuItems(menu)
+            diplayMenuItems(menues)
         }
         else{
-            diplayMenuItems(menuCategoria)
+            diplayMenuItems(menuesCategoria)
         }
     });
 });
@@ -189,8 +200,8 @@ function diplayMenuItems(menuItems) {
 
     sectionCenter.innerHTML = displayMenu;
 }
-function displayMenuButtons() {
-    const categorias = menu.reduce(
+function displayMenuesButtons() {
+    const categorias = menues.reduce(
         function (values, item) {
             if (!values.includes(item.categoria)) {
                 values.push(item.categoria);
@@ -203,8 +214,7 @@ function displayMenuButtons() {
         .map(function (categoria) {
             return `<button type="button" class="filter-btn" data-id=${categoria}>
             ${categoria}
-          </button>`;
-          
+        </button>`;
         })
         .join("");
 
@@ -215,15 +225,15 @@ function displayMenuButtons() {
     filterBtns.forEach(function (btn) {
         btn.addEventListener("click", function (e) {
             const categoria = e.currentTarget.dataset.id;
-            const menuCategoria = menu.filter(function (menuItem) {
-                if (menuItem.categoria === categoria) {
-                    return menuItem;
+            const menuesCategoria = menues.filter(function (menuesItem) {
+                if (menuesItem.categoria === categoria) {
+                    return menuesItem;
                 }
             });
             if (categoria === "todos") {
-                diplayMenuItems(menu);
+                diplayMenuItems(menues);
             } else {
-                diplayMenuItems(menuCategoria);
+                diplayMenuItems(menuesCategoria);
             }
         });
     });
