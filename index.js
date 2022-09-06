@@ -116,8 +116,8 @@ for(const menu of menues){
 localStorage.setItem("menues", JSON.stringify(menues));
 
 let menus = localStorage.getItem("menues");
-console.log(JSON.parse(menues));
-console.log(menues);
+console.log(JSON.parse(menus));
+console.log(menus);
 
 
 /*fetch*/
