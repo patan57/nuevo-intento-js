@@ -1,0 +1,98 @@
+[
+    {
+        "id": 1,
+        "titulo": "panqueques con miel y frambuesas",
+        "categoria": "postres",
+        "precio": "$1250",
+        "img": "./img/pancakes-2291908_1920.jpg",
+        "desc": "plato que consiste de 4 panqueques bañados con miel y algunas frambuesa"
+    },
+    {
+        "id": 2,
+        "titulo": "yogurt con cereales y frambuesas",
+        "categoria": "postres",
+        "precio": "$1350",
+        "img": "./img/strawberry-dessert-2191973_1920.jpg",
+        "desc": "yogurt de frutilla en copa bañado de frutos secos, cereales y frambuesas"
+    },
+    {
+        "id": 3,
+        "titulo": "bizcochuelo con dulce de leche y frambuesas",
+        "categoria": "postres",
+        "precio": "$1110",
+        "img": "./img/dessert-1786311_1920.jpg",
+        "desc": "4 porciones de bizcochuelo relleno con chocolate, bañado en dulce de leche y frambuesas"
+    },
+    {
+        "id": 4,
+        "titulo": "6 bochas de helado con frutillas y frambuesas",
+        "categoria": "postres",
+        "precio": "$1600",
+        "img": "./img/ice-cream-3611698_1920.jpg",
+        "desc": "seis bochas de helado a elección, cucuruchos y salsa de chocolate con frutillas y frambuesas"
+    },
+    {
+        "id": 5,
+        "titulo": "hamburguesa con papas fritas y ensalada",
+        "categoria": "plato principal",
+        "precio": "$1900",
+        "img": "./img/hamburguer1920.jpg",
+        "desc": "300 grs de carne vacuna picada con queso, panceta, porción de papas fritas y ensalada de hojas verdes con tomate"
+    },
+    {
+        "id": 6,
+        "titulo": "pizza de la casa",
+        "categoria": "plato principal",
+        "precio": "$1600",
+        "img": "./img/cheese-1869708_1920.jpg",
+        "desc": "pizza grande de ocho porciones de muzzarella, aceitunas negras, salsa de tomate y cebolla de verdeo picada"
+    },
+    {
+        "id": 7,
+        "titulo": "espaguetis con langostinos y salsa secreta",
+        "categoria": "plato principal",
+        "precio": "$1800",
+        "img": "./img/ice-cream-3611698_1920.jpg",
+        "desc": "300 grs de espaguetis, 100 gr de langostinos con salsa secreta de la casa con queso rallado"
+    },
+    {
+        "id": 8,
+        "titulo": "wok de arroz con pollo y salsa teriyaki",
+        "categoria": "plato principal",
+        "precio": "$1700",
+        "img": "./img/chicken-7249273_1920.jpg",
+        "desc": "350 grs de arroz y 3 patas de pollo acompañados de un salteado de verduras y salsa teriyaki"
+    },
+    {
+        "id": 9,
+        "titulo": "vino de la casa",
+        "categoria": "bebidas",
+        "precio": "$1200",
+        "img": "./img/wines-1761613_1920.jpg",
+        "desc": "litro de vino tinto o blanco bodega lopez"
+    },
+    {
+        "id": 10,
+        "titulo": "cerveza tirada",
+        "categoria": "bebidas",
+        "precio": "$750",
+        "img": "./img/beer-2695358_1920.jpg",
+        "desc": "pinta a eleccion entre ipa, golden y honey"
+    },
+    {
+        "id": 11,
+        "titulo": "gaseosa de litro",
+        "categoria": "bebidas",
+        "precio": "$600",
+        "img": "./img/soft-drink-4280835_1920.jpg",
+        "desc": "bebida de litro a eleccion linea pepsi"
+    },
+    {
+        "id": 12,
+        "titulo": "litro de agua importada",
+        "categoria": "bebidas",
+        "precio": "$500",
+        "img": "./img/glass-4519112_1920.jpg",
+        "desc": "litro de agua evian"
+    }
+]

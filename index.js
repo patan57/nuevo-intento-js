@@ -1,13 +1,13 @@
-const promo = document.querySelector ('#promo')
-promo.addEventListener ('click', () => {
-Swal.fire({
-    title: '¡Cupón de descuento!',
-    text: 'Con la palabra clave templanza tendras un 15% sobre el total de la cuenta.',
-    imageUrl: './img/lucky.jpg',
-    imageWidth: 400,
-    imageHeight: 200,
-    imageAlt: 'Custom image',
-})
+const promo = document.querySelector('#promo')
+promo.addEventListener('click', () => {
+    Swal.fire({
+        title: '¡Cupón de descuento!',
+        text: 'Con la palabra clave templanza tendras un 15% sobre el total de la cuenta.',
+        imageUrl: './img/lucky.jpg',
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+    })
 })
 
 const menues = [
@@ -109,8 +109,8 @@ const menues = [
     },
 ];
 
-const guardar = (clave, valor) => {localStorage.setItem(clave, valor);}
-for(const menu of menues){
+const guardar = (clave, valor) => { localStorage.setItem(clave, valor); }
+for (const menu of menues) {
     guardar(menu.id, JSON.stringify(menu))
 }
 localStorage.setItem("menues", JSON.stringify(menues));
@@ -120,22 +120,23 @@ console.log(JSON.parse(menus));
 console.log(menus);
 
 
-/*fetch*/
-
-const lista = document.querySelector('#listado')
-fetch('/data.json')
-    .then((res) => res.json)
-    .then((data) =>{
-
-        data.forEach((menues) =>{
-            const li = document.createElement('li')
+const lista = document.getElementById("listado")
+fetch("./data.json")
+    .then(response => response.json())
+    .then(menues => {
+        menues.forEach(menu => {
+            const li = document.createElement("li")
             li.innerHTML = `
-            <h4>${menues.titulo}</h4>
-            <p>${menues.id}</p>
-            <p>${menues.categoria}</p>
-            <p>${menues.precio}</p>
-            <p>${menues.img}</p>
-            <p>${menues.desc}</p>
+            <article class="menu-item">
+                <img src=${menu.img} alt=${menu.titulo} class="foto"></img>
+                <div.getElementByClass("item-info")
+                    <header>
+                        <h4>${menu.titulo}</h4>
+                        <h4.getElementByClass("precio")>${menu.precio}</h4.getElementByClass>
+                    </header>
+                    <p>${menu.desc}</p>
+                </div>
+            </article>    
             <hr/>
             `
 
@@ -144,26 +145,79 @@ fetch('/data.json')
     })
 
 const pedirPlatos = () => {
-    return new Promise ((resolve, reject) =>{
-        setTimeout (() =>{
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
             resolve(menues)
-        },3000)
+        }, 3000)
     })
 }
 
-const guardarLocal = (clave, valor) => {localStorage.setItem(clave, valor)};
+// const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
 
-guardarLocal("listaMenu", JSON.stringify(menu));
+// guardarLocal("listaMenu", JSON.stringify(menues));
 
-const sectionCenter = document.querySelector("section-center");
-const btnContainer = document.querySelector(".btn-container");
+// const sectionCenter = document.querySelector("section-center");
+// const btnContainer = document.querySelector(".btn-container");
 
-window.addEventListener("DOMContentLoaded", function () {
-    diplayMenuItems(menues);
-    displayMenuButtons();
-});
+// window.addEventListener("DOMContentLoaded", function () {
+//     displayMenuesItems(menues);
+//     displayMenuesButtons();
+// });
 
-filterBtns.forEach(function(btn){
+
+/*filter*/
+const filtroEsPostre = menues.filter(menu => menu.categoria === "postres");
+const filtroEsPlatoPrincipal = menues.filter(menu => menu.categoria === "plato principal");
+const filtroEsBebida = menues.filter(menu => menu.categoria === "bebida");
+
+filterSelection("all")
+function filterSelection(c) {
+    var x, i;
+    x = document.getElementsByClassName("filterDiv");
+    if (c == "all") c = "";
+    // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+    for (i = 0; i < x.length; i++) {
+        w3RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+    }
+}
+
+// Show filtered elements
+function w3AddClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {
+            element.className += " " + arr2[i];
+        }
+    }
+}
+
+// Hide elements that are not selected
+function w3RemoveClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);
+        }
+    }
+    element.className = arr1.join(" ");
+}
+
+// Add active class to the current control button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+    });
+}
+/*filterBtns.forEach(function(btn){
     btn.addEventListener("click", function(e){
         const categoria = e.currentTarget.dataset.id;
         const menuesCategoria = menu.filter(function(menuesItem){
@@ -178,64 +232,6 @@ filterBtns.forEach(function(btn){
             diplayMenuItems(menuesCategoria)
         }
     });
-});
+});*/
 
-function diplayMenuItems(menuItems) {
-    let displayMenu = menuItems.map(function (item) {
-
-        return `<article class="menu-item">
-            <img src=${item.img} alt=${item.titulo} class="photo" />
-            <div class="item-info">
-              <header>
-                <h4>${item.titulo}</h4>
-                <h4 class="precio">$${item.precio}</h4>
-              </header>
-              <p class="item-text">
-                ${item.desc}
-              </p>
-            </div>
-          </article>`;
-    });
-    displayMenu = displayMenu.join("");
-
-    sectionCenter.innerHTML = displayMenu;
-}
-function displayMenuesButtons() {
-    const categorias = menues.reduce(
-        function (values, item) {
-            if (!values.includes(item.categoria)) {
-                values.push(item.categoria);
-            }
-            return values;
-        },
-        ["all"]
-    );
-    const categoriaBtns = categorias
-        .map(function (categoria) {
-            return `<button type="button" class="filter-btn" data-id=${categoria}>
-            ${categoria}
-        </button>`;
-        })
-        .join("");
-
-    btnContainer.innerHTML = categoriaBtns;
-    const filterBtns = btnContainer.querySelectorAll(".filter-btn");
-    console.log(filterBtns);
-
-    filterBtns.forEach(function (btn) {
-        btn.addEventListener("click", function (e) {
-            const categoria = e.currentTarget.dataset.id;
-            const menuesCategoria = menues.filter(function (menuesItem) {
-                if (menuesItem.categoria === categoria) {
-                    return menuesItem;
-                }
-            });
-            if (categoria === "todos") {
-                diplayMenuItems(menues);
-            } else {
-                diplayMenuItems(menuesCategoria);
-            }
-        });
-    });
-}
 
